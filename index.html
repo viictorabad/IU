@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+</head>
+
+<body>
+    <form action="http://193.147.87.202/procesaform.php" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Datos de acceso e identificación</legend>
+
+            <label for="campo-usuario">Nombre de usuario:</label>;
+            <input type="text" id="campo-usuario" name="usuario" value="usuario_defecto"><br><br>
+
+            <label for="campo-clave">Contraseña:</label>
+            <input type="password" id="campo-clave" name="clave" value="ClaveSegura123"><br><br>
+
+            <input type="hidden" name="token_formulario" value="abc123xyz">
+        </fieldset>
+
+
+
+        <input type="submit" value="Enviar formulario">
+    </form>
+</body>
+</html>
