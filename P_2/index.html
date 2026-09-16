@@ -1,0 +1,91 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+<link rel="stylesheet" href="style.css">
+
+<script src="Dom_Class.js"></script>
+<script src="Validation_Class.js"></script>
+<script src="persona_Class.js"></script>
+</head>
+<body>
+<header>
+    <h1>Gestión de Personas</h1>
+    <button type="button" onclick="ocultar_mostrar_menu()">Ocultar / Mostrar menú</button>
+</header>
+
+<nav id="menu">
+    <aside>
+
+        <h2>Menu</h2>
+
+        <ul>
+            <li>Alta Persona</li>
+            <li>Baja Persona</li>
+            <li>Buscar persona</li>
+            <li>Modificar Persona</li>
+            <li>Borrar persona</li>
+            <li>Detalle Persona</li>
+        </ul>
+    </aside>
+</nav>
+
+<section>
+    <h2>Alta de persona</h2>
+
+    <form action="http://193.147.87.202/procesaform.php"
+        method="POST"
+        enctype="multipart/form-data"
+        onsubmit="if (typeof entidad.ADD_submit_persona() === 'object') { return false; } else { return true; }">
+
+    <div>
+        <label class="label_dni" for="dni">DNI</label>
+        <input type="text" id="dni" name="dni" onblur="return entidad.ADD_dni_validation();">
+
+        <span id="span_error_dni">
+            <a id="error_dni"></a>
+        </span>
+    </div>
+
+    <div>
+        <label class="label_nombre_persona" for="nombre_persona">Nombre</label>
+        <input type="text" id="nombre_persona" name="nombre_persona" onblur="return entidad.ADD_nombre_persona_validation();">
+
+        <span id="span_error_nombre_persona">
+            <a id="error_nombre_persona"></a>
+        </span>
+    </div>
+
+    <div>
+        <button type="submit" id="submit_button">Guardar</button>
+    </div>
+    </form>
+</section>
+
+<article>
+    <p>
+        Formulario de alta de personas.
+    </p>
+</article>
+
+<footer>
+    <p>Gestión de Personas</p>
+</footer>
+<script>
+let entidad = new Persona();
+
+document.getElementById('span_error_dni').style.display = 'none';
+document.getElementById('span_error_nombre_persona').style.display = 'none';
+
+function ocultar_mostrar_menu(){
+    let menu = document.getElementById('menu');
+
+    if(menu.style.display === 'none') {
+        menu.style.display = 'block';
+    } else{
+        menu.style.display = 'none';
+    }
+}
+</script>
+</body>
+</html>
