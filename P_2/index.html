@@ -1,91 +1,168 @@
 <!DOCTYPE html> 
-<html>
+    <html>
 
-<head>
-<link rel="stylesheet" href="style.css">
+        <head>
+            <link rel="stylesheet" href="style.css">
 
-<script src="Dom_Class.js"></script>
-<script src="Validation_Class.js"></script>
-<script src="persona_Class.js"></script>
-</head>
-<body>
-<header>
-    <h1>Gestión de Personas</h1>
-    <button type="button" onclick="ocultar_mostrar_menu()">Ocultar / Mostrar menú</button>
-</header>
+            <script src="Dom_Class.js"></script>
+            <script src="Validation_Class.js"></script>
+            <script src="persona_Class.js"></script>
+            </head>
+            <body>
+            <header>
+                <h1>Gestión de Personas</h1>
+                <button type="button" onclick="ocultar_mostrar_menu()">Ocultar / Mostrar menú</button>
+            </header>
 
-<nav id="menu">
-    <aside>
+            <nav id="menu">
+                <aside>
 
-        <h2>Menu</h2>
+                    <h2>Menu</h2>
 
-        <ul>
-            <li>Alta Persona</li>
-            <li>Baja Persona</li>
-            <li>Buscar persona</li>
-            <li>Modificar Persona</li>
-            <li>Borrar persona</li>
-            <li>Detalle Persona</li>
-        </ul>
-    </aside>
-</nav>
+                    <ul>
+                        <li>
+                            <span onclick="mostrar_ocultar_formulario_persona()";>
+                                Alta Persona
+                            </span>
+                        </li>
+                        <li>Baja Persona</li>
+                        <li>Buscar persona</li>
+                        <li>Modificar Persona</li>
+                        <li>Borrar persona</li>
+                        <li>Detalle Persona</li>
+                    </ul>
+                </aside>
+            </nav>
 
-<section>
-    <h2>Alta de persona</h2>
+            <section id="IU_form">
+                <h2>Alta de persona</h2>
 
-    <form action="http://193.147.87.202/procesaform.php"
-        method="POST"
-        enctype="multipart/form-data"
-        onsubmit="if (typeof entidad.ADD_submit_persona() === 'object') { return false; } else { return true; }">
+                <form action="http://193.147.87.202/procesaform.php"
+                    method="POST"
+                    enctype="multipart/form-data"
+                    onsubmit="return entidad.ADD_submit_persona() === true;">
 
-    <div>
-        <label class="label_dni" for="dni">DNI</label>
-        <input type="text" id="dni" name="dni" onblur="return entidad.ADD_dni_validation();">
+                <div>
+                    <label class="label_dni" for="dni">DNI</label>
+                    <input type="text" id="dni" name="dni" onblur="return entidad.ADD_dni_validation();">
 
-        <span id="span_error_dni">
-            <a id="error_dni"></a>
-        </span>
-    </div>
+                    <span id="span_error_dni">
+                        <a id="error_dni"></a>
+                    </span>
+                </div>
 
-    <div>
-        <label class="label_nombre_persona" for="nombre_persona">Nombre</label>
-        <input type="text" id="nombre_persona" name="nombre_persona" onblur="return entidad.ADD_nombre_persona_validation();">
+                <div>
+                    <label class="label_nombre_persona" for="nombre_persona">Nombre</label>
+                    <input type="text" id="nombre_persona" name="nombre_persona" onblur="return entidad.ADD_nombre_persona_validation();">
 
-        <span id="span_error_nombre_persona">
-            <a id="error_nombre_persona"></a>
-        </span>
-    </div>
+                    <span id="span_error_nombre_persona">
+                        <a id="error_nombre_persona"></a>
+                    </span>
+                </div>
 
-    <div>
-        <button type="submit" id="submit_button">Guardar</button>
-    </div>
-    </form>
-</section>
+                <div>
+                    <label class="label_apellidos_persona" for="apellidos_persona">Apellidos</label>
+                    <input type="text" id="apellidos_persona" name="apellidos_persona" onblur="return entidad.ADD_apellidos_persona_validation();">
 
-<article>
-    <p>
-        Formulario de alta de personas.
-    </p>
-</article>
+                    <span id="span_error_apellidos_persona">
+                        <a id="error_apellidos_persona"></a>
+                    </span>
+                </div>
 
-<footer>
-    <p>Gestión de Personas</p>
-</footer>
-<script>
-let entidad = new Persona();
+                <div>
+                    <label class="label_fechaNacimiento_persona" for="fechaNacimiento_persona">Fecha Nacimiento</label>
+                    <input type="text" id="fechaNacimiento_persona" name="fechaNacimiento" onblur="return entidad.ADD_fechaNacimiento_persona_validation();">
 
-document.getElementById('span_error_dni').style.display = 'none';
-document.getElementById('span_error_nombre_persona').style.display = 'none';
+                    <span id="span_error_fechaNacimiento_persona">
+                        <a id="error_fechaNacimiento_persona"></a>
+                    </span>
+                </div>
 
-function ocultar_mostrar_menu(){
-    let menu = document.getElementById('menu');
+                <div>
+                    <label class="label_direccion_persona" for="direccion_persona">Dirección Postal</label>
+                    <input type="text" id="direccion_persona" name="direccion" onblur="return entidad.ADD_direccion_persona_validation();">
 
-    if(menu.style.display === 'none') {
-        menu.style.display = 'block';
-    } else{
-        menu.style.display = 'none';
-    }
-}
-</script>
-</body>
-</html>
+                    <span id="span_error_direccion_persona">
+                        <a id="error_direccion_persona"></a>
+                    </span>
+                </div>
+
+                <div>
+                    <label class="label_telefono_persona" for="telefono_persona">Teléfono</label>
+                    <input type="text" id="telefono_persona" name="telefono" onblur="return entidad.ADD_telefono_persona_validation();">
+
+                    <span id="span_error_telefono_persona">
+                        <a id="error_telefono_persona"></a>
+                    </span>
+                </div>
+
+                <div>
+                    <label class="label_email_persona" for="email_persona">Correo electrónico</label>
+                    <input type="text" id="email_persona" name="email" onblur="return entidad.ADD_email_persona_validation();">
+
+                    <span id="span_error_email_persona">
+                        <a id="error_email_persona"></a>
+                    </span>
+                </div>
+
+                <div>
+                    <label class="label_nuevo_foto_persona" for="nuevo_foto_persona">Nueva Foto Persona</label>
+                    <input type="file" id="nuevo_foto_persona" name="nuevo_foto" onblur="return entidad.ADD_nuevo_foto_persona_validation();">
+
+                    <span id="span_error_nuevo_foto_persona">
+                        <a id="error_nuevo_foto_persona"></a>
+                    </span>
+                </div>
+
+                <div>
+                    <button type="submit" id="submit_button">Guardar</button>
+                </div>
+                </form>
+            </section>
+
+            <article>
+                <p>
+                    Formulario de alta de personas.
+                </p>
+            </article>
+
+            <footer>
+                <p>Gestión de Personas</p>
+            </footer>
+            <script>
+            let entidad = new Persona();
+
+            document.getElementById('span_error_dni').style.display = 'none';
+            document.getElementById('span_error_nombre_persona').style.display = 'none';
+            document.getElementById('span_error_apellidos_persona').style.display = 'none';
+            document.getElementById('span_error_fechaNacimiento_persona').style.display = 'none';
+            document.getElementById('span_error_direccion_persona').style.display='none';
+            document.getElementById('span_error_telefono_persona').style.display='none';
+            document.getElementById('span_error_email_persona').style.display='none';
+            document.getElementById('span_error_nuevo_foto_persona').style.display = 'none';
+
+            function ocultar_mostrar_menu(){
+                let menu = document.getElementById('menu');
+
+                if(menu.style.display === 'none') {
+                    menu.style.display = 'block';
+                } else{
+                    menu.style.display = 'none';
+                }
+            }
+
+            document.getElementById('menu').style.display = 'none';
+            document.getElementById('IU_form').style.display = 'none';
+            function mostrar_ocultar_formulario_persona() {
+                let formulario = document.getElementById('IU_form');
+
+                if (formulario.style.display === 'none') {
+                    formulario.style.display = 'block';
+                } else {
+                    formulario.style.display = 'none';
+                }
+            }
+            </script>
+        </body>
+    </html>
+

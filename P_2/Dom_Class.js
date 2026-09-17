@@ -1,4 +1,17 @@
 class Dom{
+
+    constructor(){
+
+    }
+
+    show_element(id){
+        document.getElementById(id).style.display='block';
+    }
+
+    hide_element(id){
+        document.getElementById(id).style.display='none';
+    }
+    
     mostrar_error_campo(id, codigoerror){
         document.getElementById('span_error_' + id).style.display = 'inline';
 
@@ -18,11 +31,5 @@ class Dom{
         document.getElementById(id).style.borderBlockColor = 'green';
     }
 
-    ocultar(id){
-        document.getElementById(id).style.display = 'none';
-    }
-
-    mostrar(id){
-        document.getElementById(id).style.display = 'block';
-    }
+    
 }
